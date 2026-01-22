@@ -8,10 +8,12 @@ const ExperienceCard = ({ experience, index }) => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative pl-8 pb-8 border-l-2 border-primary-500 dark:border-primary-400"
+      className="relative pl-8 pb-8 border-l-2 border-gradient-to-b from-primary-500 to-purple-500"
     >
-      <div className="absolute -left-2 top-0 w-4 h-4 bg-primary-500 dark:bg-primary-400 rounded-full"></div>
-      <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+      <div className="absolute -left-3 top-0 w-6 h-6 bg-gradient-to-br from-primary-500 to-purple-500 rounded-full shadow-lg border-2 border-white dark:border-gray-800"></div>
+      <div className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-primary-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-300"></div>
+        <div className="relative">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -43,11 +45,12 @@ const ExperienceCard = ({ experience, index }) => {
           {experience.technologies.map((tech, idx) => (
             <span
               key={idx}
-              className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+              className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/30 dark:to-purple-900/30 text-primary-800 dark:text-primary-200 rounded-lg border border-primary-200 dark:border-primary-800"
             >
               {tech}
             </span>
           ))}
+        </div>
         </div>
       </div>
     </motion.div>

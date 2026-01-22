@@ -16,10 +16,10 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
             Work Experience
           </h2>
-          <div className="w-24 h-1 bg-primary-600 dark:bg-primary-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 mx-auto mb-4 rounded-full"></div>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
