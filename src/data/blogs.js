@@ -1,0 +1,14 @@
+export const blogs = [
+  {
+    id: 1,
+    title: 'My First Blog Post',
+    content: 'This is the content of my first blog post.',
+    date: '2024-01-15',
+  },
+  {
+    id: 2,
+    title: 'My Second Blog Post',
+    content: 'This is the content of my second blog post.',
+    date: '2024-01-10',
+  },
+];
