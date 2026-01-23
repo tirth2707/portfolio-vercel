@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import profileImage from '../../assets/tirth.png';
 
 const About = () => {
   return (
@@ -31,7 +32,7 @@ const About = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
               <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
-                <img src="../../assets/tirth.png" alt="Tirth Shah" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src={profileImage} alt="Tirth Shah" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
             </motion.div>
 

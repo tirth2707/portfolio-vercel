@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
+import resume from '../../assets/Tirth\'s Resume - SE.pdf';
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -54,7 +55,7 @@ const Hero = () => {
               Get In Touch
             </button>
             <a
-              href="../../../Tirth's Resume - SE.pdf"
+              href={resume}
               download
               className="px-8 py-3 bg-white dark:bg-gray-800 text-primary-600 dark:text-primary-400 border-2 border-primary-600 dark:border-primary-400 rounded-lg font-medium hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
             >

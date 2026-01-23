@@ -2,7 +2,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme('light');
 
   return (
     <button
