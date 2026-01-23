@@ -14,7 +14,7 @@ const navItems = [
 ];
 
 const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,12 +44,15 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
   }, []);
 
   const handleClick = (e, item) => {
+    console.log("🚀 ~ handleClick ~ item:", item)
+    console.log("🚀 ~ handleClick ~ e:", e)
     if (item.type === "link") {
       setIsMobileMenuOpen(false);
       return;
     }
     e.preventDefault();
     const element = document.querySelector(item.href);
+    console.log("🚀 ~ handleClick ~ element:", element)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
