@@ -7,6 +7,9 @@ const calculateReadingTime = (content) => {
   return readingTime || 1;
 };
 
+// Import RAG blog content from markdown file
+import ragBlogContent from './blogs_rag.md?raw';
+
 export const blogs = [
   {
     id: 1,
@@ -142,6 +145,16 @@ Cryptocurrency remains an **extremely risky asset**. However, its potential for 
     category: "Finance",
     excerpt:
       "Exploring the current Bitcoin landscape, its recent surge, and whether it's a smart investment or financial folly.",
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "RAG Is the New Database: How Software Engineers Should Think in 2026",
+    content: ragBlogContent,
+    date: "2026-01-15",
+    tags: ["AI", "RAG", "Database", "Software Engineering"],
+    category: "Technology",
+    excerpt: "Exploring how RAG is transforming the way we think about data storage and retrieval in the AI-native era.",
     featured: true,
   },
 ];
