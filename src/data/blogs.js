@@ -9,7 +9,7 @@ const calculateReadingTime = (content) => {
 
 // Import RAG blog content from markdown file
 import ragBlogContent from './blogs_rag.md?raw';
-import cursorBlogContent from './blogs_cursor.md?raw';
+import cursorBlogContent from './blogs_claude.md?raw';
 
 export const blogs = [
   {
@@ -160,24 +160,14 @@ Cryptocurrency remains an **extremely risky asset**. However, its potential for 
   },
   {
     id: 4,
-    title: "Everyone Has Cursor. Nobody Has a Standard. Let's Fix That.",
-    content: ragBlogContent,
-    date: "2026-01-15",
-    tags: ["AI", "RAG", "Database", "Software Engineering"],
-    category: "Technology",
-    excerpt: "Exploring how RAG is transforming the way we think about data storage and retrieval in the AI-native era.",
-    featured: true,
-  },
-  {
-    id: 5,
     title: "How I Made Claude a Top 1% Developer on Every Project",
     content: cursorBlogContent,
     date: "2026-04-01",
     tags: ["AI", "Cluade", "Cursor", "Software Engineering"],
     category: "Technology",
-    excerpt: "For a few months, my team’s development workflow looked like a digital "Wild West."",
+    excerpt: "For a few months, my team’s development workflow looked like a digital Wild West.",
     featured: true,
-  },
+  }
 ];
 
 // Add reading time to each blog
