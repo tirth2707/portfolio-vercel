@@ -1,17 +1,27 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import Hero from "./components/sections/Hero";
+import ImpactStrip from "./components/sections/ImpactStrip";
+import AudiencePanel from "./components/sections/AudiencePanel";
 import About from "./components/sections/About";
-import Experience from "./components/sections/Experience";
-import Projects from "./components/sections/Projects";
-import Skills from "./components/sections/Skills";
-import Education from "./components/sections/Education";
-import Contact from "./components/sections/Contact";
-import Blog from "./components/sections/Blog";
-import Certifications from "./components/sections/Certifications";
-import BlogDetail from "./components/sections/BlogDetail";
+
+const Experience = lazy(() => import("./components/sections/Experience"));
+const ArchitectureLab = lazy(() => import("./components/sections/ArchitectureLab"));
+const ArchitectureSimulator = lazy(() => import("./components/sections/ArchitectureSimulator"));
+const Projects = lazy(() => import("./components/sections/Projects"));
+const Skills = lazy(() => import("./components/sections/Skills"));
+const PortfolioAssistant = lazy(() => import("./components/sections/PortfolioAssistant"));
+const Education = lazy(() => import("./components/sections/Education"));
+const Contact = lazy(() => import("./components/sections/Contact"));
+const Blog = lazy(() => import("./components/sections/Blog"));
+const Certifications = lazy(() => import("./components/sections/Certifications"));
+const BlogDetail = lazy(() => import("./components/sections/BlogDetail"));
+
+const SectionFallback = () => (
+  <div className="min-h-32 border-y border-white/10 bg-slate-950" aria-hidden="true" />
+);
 
 function App() {
   useEffect(() => {
@@ -33,20 +43,41 @@ function App() {
           element={
             <div>
               <Hero />
+              <ImpactStrip />
+              <AudiencePanel />
               <About />
-              <Experience />
-              {/* <Projects /> */}
-              <Certifications />
-              <Skills />
-              <Education />
-              <Blog />
-              <Contact />
+              <Suspense fallback={<SectionFallback />}>
+                <ArchitectureLab />
+                <ArchitectureSimulator />
+                <Skills />
+                <Projects />
+                <PortfolioAssistant />
+                <Experience />
+                <Certifications />
+                <Education />
+                <Blog />
+                <Contact />
+              </Suspense>
             </div>
           }
         />
 
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route
+          path="/blog"
+          element={
+            <Suspense fallback={<SectionFallback />}>
+              <Blog />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/:id"
+          element={
+            <Suspense fallback={<SectionFallback />}>
+              <BlogDetail />
+            </Suspense>
+          }
+        />
       </Routes>
 
       <Footer />

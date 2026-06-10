@@ -3,66 +3,56 @@
 @tailwind utilities;
 
 @layer base {
-  * {
-    @apply transition-colors duration-200;
-  }
-  
   html {
     scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    background: #020617;
   }
 
-  /* Custom scrollbar */
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: rgba(103, 232, 249, 0.28);
+    color: #f8fafc;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-800;
+    background: #020617;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+    background: #1e293b;
+    border: 2px solid #020617;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400 dark:bg-gray-500;
+    background: #334155;
+  }
+
+  button,
+  a,
+  input,
+  textarea {
+    border-radius: 0;
   }
 }
 
 @layer utilities {
-  /* Glassmorphism effect */
-  .glass {
-    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg;
+  .surface-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent;
-  }
-
-  /* Smooth animations */
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-in-out;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Hover lift effect */
-  .hover-lift {
-    @apply transition-transform duration-300 hover:-translate-y-1;
+  .text-balance {
+    text-wrap: balance;
   }
 }

@@ -1,0 +1,113 @@
+export const skillCategories = [
+  {
+    id: 'cloud-ai',
+    label: 'AI & Cloud Architecture',
+    color: '#22d3ee',
+    description:
+      'Designing secure, observable, cost-aware cloud systems with AI-first product workflows.',
+  },
+  {
+    id: 'full-stack',
+    label: 'Full-Stack Product Systems',
+    color: '#34d399',
+    description:
+      'Building React, Angular, Node.js, and API layers that feel crisp to users and maintainable to teams.',
+  },
+  {
+    id: 'data-migration',
+    label: 'Data & Migration Engineering',
+    color: '#f59e0b',
+    description:
+      'Modernizing database movement, reliability, and operational handoffs without slowing delivery.',
+  },
+  {
+    id: 'quality-delivery',
+    label: 'Quality & Delivery Systems',
+    color: '#fb7185',
+    description:
+      'Turning standards, test strategy, CI/CD, and mentoring into measurable engineering velocity.',
+  },
+];
+
+export const skillNodes = [
+  {
+    id: 'gcp-architecture',
+    label: 'GCP Architecture',
+    category: 'cloud-ai',
+    level: 92,
+    tools: ['GCP', 'Cloud Run', 'GKE', 'IAM', 'Cloud Build'],
+    proof: 'Google Cloud Professional Cloud Architect with production modernization work.',
+    demoType: 'cloud-topology',
+    relatedCaseStudyIds: ['telecom-modernization', 'cloud-ai-enablement'],
+  },
+  {
+    id: 'gen-ai',
+    label: 'Gen AI Workflows',
+    category: 'cloud-ai',
+    level: 84,
+    tools: ['Vertex AI patterns', 'RAG thinking', 'Prompt systems', 'AI tooling'],
+    proof: 'Google Cloud Gen-AI Developer certified and active AI engineering blogger.',
+    demoType: 'ai-signal',
+    relatedCaseStudyIds: ['cloud-ai-enablement'],
+  },
+  {
+    id: 'react-ui',
+    label: 'React Interfaces',
+    category: 'full-stack',
+    level: 90,
+    tools: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    proof: 'Built modern frontends with reusable interaction patterns and production polish.',
+    demoType: 'ui-assembly',
+    relatedCaseStudyIds: ['telecom-modernization'],
+  },
+  {
+    id: 'mean-mern',
+    label: 'MEAN / MERN Systems',
+    category: 'full-stack',
+    level: 88,
+    tools: ['Angular', 'React', 'Node.js', 'Express', 'TypeScript'],
+    proof: 'Architected a full-stack MEAN application for a large telecom provider.',
+    demoType: 'api-flow',
+    relatedCaseStudyIds: ['telecom-modernization'],
+  },
+  {
+    id: 'migration',
+    label: 'Migration Accelerators',
+    category: 'data-migration',
+    level: 86,
+    tools: ['PostgreSQL', 'Python', 'Validation scripts', 'Automation'],
+    proof: 'Reduced PostgreSQL migration downtime from 12 hours to 2 hours.',
+    demoType: 'migration-timeline',
+    relatedCaseStudyIds: ['migration-accelerator'],
+  },
+  {
+    id: 'datastores',
+    label: 'Operational Datastores',
+    category: 'data-migration',
+    level: 80,
+    tools: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Firebase'],
+    proof: 'Experience across relational, document, cache, and managed data layers.',
+    demoType: 'data-mesh',
+    relatedCaseStudyIds: ['migration-accelerator', 'telecom-modernization'],
+  },
+  {
+    id: 'quality',
+    label: 'Quality Engineering',
+    category: 'quality-delivery',
+    level: 87,
+    tools: ['SonarQube', 'Jest', 'React Testing Library', 'Cypress'],
+    proof: 'Authored best practices that reduced code smells by 30%.',
+    demoType: 'quality-pipeline',
+    relatedCaseStudyIds: ['quality-operating-system'],
+  },
+  {
+    id: 'delivery',
+    label: 'Delivery Enablement',
+    category: 'quality-delivery',
+    level: 85,
+    tools: ['Docker', 'Kubernetes', 'CI/CD', 'Git'],
+    proof: 'Mentored junior developers and improved delivery speed by 40%.',
+    demoType: 'delivery-system',
+    relatedCaseStudyIds: ['quality-operating-system'],
+  },
+];

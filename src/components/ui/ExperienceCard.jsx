@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiCalendar, FiMapPin } from 'react-icons/fi';
+import { Calendar } from 'lucide-react';
 
 const ExperienceCard = ({ experience, index }) => {
   return (
@@ -25,7 +25,7 @@ const ExperienceCard = ({ experience, index }) => {
           </div>
           <div className="flex flex-col gap-1 mt-2 md:mt-0 md:text-right">
             <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-              <FiCalendar className="w-4 h-4" />
+              <Calendar className="w-4 h-4" />
               <span>{experience.period}</span>
             </div>
           </div>

@@ -1,7 +1,7 @@
 // Helper function to calculate reading time
 const calculateReadingTime = (content) => {
   const wordsPerMinute = 200;
-  const text = content.replace(/[#*`\[\]()]/g, "").trim();
+  const text = content.replace(/[#*`()]/g, "").replace(/\[|\]/g, "").trim();
   const wordCount = text.split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / wordsPerMinute);
   return readingTime || 1;

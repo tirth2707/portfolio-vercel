@@ -3,16 +3,19 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { AudienceModeProvider } from './contexts/AudienceModeContext';
 import { BrowserRouter } from 'react-router-dom';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter>
-       <Analytics />
-        <App />
-      </BrowserRouter>
+      <AudienceModeProvider>
+        <BrowserRouter>
+          <Analytics />
+          <App />
+        </BrowserRouter>
+      </AudienceModeProvider>
     </ThemeProvider>
   </StrictMode>,
 );

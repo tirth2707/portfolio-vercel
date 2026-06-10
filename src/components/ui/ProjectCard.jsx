@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { Code2, ExternalLink } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
   return (
@@ -29,7 +29,7 @@ const ProjectCard = ({ project, index }) => {
               rel="noopener noreferrer"
               className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 transition-transform"
             >
-              <FiGithub className="w-5 h-5 text-gray-900 dark:text-white" />
+              <Code2 className="w-5 h-5 text-gray-900 dark:text-white" />
             </a>
           )}
           {project.liveUrl && (
@@ -39,7 +39,7 @@ const ProjectCard = ({ project, index }) => {
               rel="noopener noreferrer"
               className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-110 transition-transform"
             >
-              <FiExternalLink className="w-5 h-5 text-gray-900 dark:text-white" />
+              <ExternalLink className="w-5 h-5 text-gray-900 dark:text-white" />
             </a>
           )}
         </div>

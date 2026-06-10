@@ -1,44 +1,39 @@
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { Code2, Mail, Network, Send } from 'lucide-react';
+import { profile } from '../../data/profile';
+
+const iconByLabel = {
+  GitHub: Code2,
+  LinkedIn: Network,
+  X: Send,
+  Email: Mail,
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { icon: FiGithub, href: 'https://github.com/tirth2707', label: 'GitHub' },
-    { icon: FiLinkedin, href: 'https://linkedin.com/in/tirth2707', label: 'LinkedIn' },
-    { icon: FiLinkedin, href: 'https://x.com/tirth2707', label: 'Twitter' },
-    { icon: FiMail, href: 'mailto:tirthshah485@gmail.com', label: 'Email' },
-  ];
-
   return (
-    <footer className="bg-gray-900 dark:bg-black text-gray-300 py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <p className="text-sm">
-              © {currentYear} Tirth Shah. All rights reserved.
-            </p>
-            <p className="text-xs text-gray-500 mt-1">
-              Built with React, Tailwind CSS, and Framer Motion
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-800 dark:bg-gray-900 hover:bg-primary-600 dark:hover:bg-primary-700 transition-colors"
-                  aria-label={social.label}
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              );
-            })}
-          </div>
+    <footer className="border-t border-white/10 bg-slate-950 py-10 text-slate-400">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <div>
+          <p className="text-sm text-slate-300">© {currentYear} {profile.name}. All rights reserved.</p>
+          <p className="mt-1 text-xs">Built with React, Tailwind CSS, Framer Motion, and Three.js.</p>
+        </div>
+        <div className="flex items-center gap-2">
+          {profile.socials.map((social) => {
+            const Icon = iconByLabel[social.label] || Mail;
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith('mailto:') ? undefined : '_blank'}
+                rel={social.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                className="inline-flex h-10 w-10 items-center justify-center border border-white/10 text-slate-300 transition hover:border-cyan-300/50 hover:text-cyan-200"
+                aria-label={social.label}
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            );
+          })}
         </div>
       </div>
     </footer>

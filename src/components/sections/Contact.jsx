@@ -1,153 +1,162 @@
-import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FiMail, FiSend } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { Mail, Send, ShieldCheck } from 'lucide-react';
+import { profile } from '../../data/profile';
+import SectionHeader from '../ui/SectionHeader';
+
+const initialFormData = {
+  name: '',
+  email: '',
+  message: '',
+};
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState(initialFormData);
+  const [status, setStatus] = useState('idle');
+  const [feedback, setFeedback] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (event) => {
+    setFormData((current) => ({
+      ...current,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // TODO: Integrate with form service (Formspree, EmailJS, etc.)
-    console.log('Form submitted:', formData);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert('Thank you for your message! I\'ll get back to you soon.');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus('submitting');
+    setFeedback('');
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: 'Portfolio contact request',
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setStatus('success');
+      setFeedback('Message sent. I will get back to you soon.');
+      setFormData(initialFormData);
+    } catch {
+      setStatus('error');
+      setFeedback(`Could not send from the form. Email me directly at ${profile.email}.`);
+    }
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gray-50 dark:bg-gray-900"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-            Get In Touch
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 mx-auto mb-4 rounded-full"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and interesting projects.
-          </p>
-        </motion.div>
+    <section id="contact" className="bg-[#07111f] py-24 text-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Contact"
+          title="Bring a modernization, cloud, or AI product problem."
+          copy="The shortest path is a clear message with the system, goal, and constraint. I will meet it with engineering context."
+        />
 
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 lg:grid-cols-[0.38fr_0.62fr]">
+          <motion.aside
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-8 md:p-10"
+            transition={{ duration: 0.45 }}
+            className="border border-white/10 bg-slate-950/72 p-6"
           >
-            <form onSubmit={handleSubmit} target="_blank" action="https://formsubmit.co/tirthshah485@gmail.com" method="POST" className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Name
-                </label>
+            <ShieldCheck className="h-8 w-8 text-emerald-300" />
+            <h3 className="mt-6 text-xl font-semibold text-white">Signal over noise</h3>
+            <p className="mt-3 text-sm leading-7 text-slate-400">
+              I am open to engineering roles, architecture conversations, modernization work, and
+              AI-enabled product systems.
+            </p>
+            <a
+              href={`mailto:${profile.email}`}
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-100"
+            >
+              <Mail className="h-4 w-4" />
+              {profile.email}
+            </a>
+          </motion.aside>
+
+          <motion.form
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.06 }}
+            onSubmit={handleSubmit}
+            className="border border-white/10 bg-slate-950/72 p-6 sm:p-8"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-sm font-medium text-slate-300">Name</span>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="Your Name"
+                  className="mt-2 w-full border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+                  placeholder="Your name"
                 />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Email
-                </label>
+              </label>
+              <label className="block">
+                <span className="text-sm font-medium text-slate-300">Email</span>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="tirthshah485@gmail.com"
+                  className="mt-2 w-full border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+                  placeholder="you@example.com"
                 />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="6"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
-                  placeholder="Your message..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-500 dark:to-purple-500 text-white rounded-xl font-medium hover:from-primary-700 hover:to-purple-700 dark:hover:from-primary-600 dark:hover:to-purple-600 transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
-              >
-                {isSubmitting ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    <FiSend className="w-5 h-5" />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-
-            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
-              <div className="flex items-center justify-center gap-2 text-gray-600 dark:text-gray-400">
-                <FiMail className="w-5 h-5" />
-                <a
-                  href="mailto:tirthshah485@gmail.com"
-                  className="hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                >
-                  tirthshah485@gmail.com
-                </a>
-              </div>
+              </label>
             </div>
-          </motion.div>
+
+            <label className="mt-5 block">
+              <span className="text-sm font-medium text-slate-300">Message</span>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="6"
+                className="mt-2 w-full resize-none border border-white/10 bg-white/[0.04] px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300"
+                placeholder="Tell me about the system, constraint, or opportunity."
+              />
+            </label>
+
+            {feedback && (
+              <div
+                className={`mt-5 border px-4 py-3 text-sm ${
+                  status === 'success'
+                    ? 'border-emerald-300/30 bg-emerald-300/10 text-emerald-100'
+                    : 'border-rose-300/30 bg-rose-300/10 text-rose-100'
+                }`}
+                role="status"
+              >
+                {feedback}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={status === 'submitting'}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 bg-cyan-300 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <Send className="h-4 w-4" />
+              {status === 'submitting' ? 'Sending message...' : 'Send message'}
+            </button>
+          </motion.form>
         </div>
       </div>
     </section>

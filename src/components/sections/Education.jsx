@@ -1,72 +1,61 @@
-import { motion } from "framer-motion";
-import { FiBook, FiCalendar } from "react-icons/fi";
+import { motion } from 'framer-motion';
+import { BookOpen, GraduationCap } from 'lucide-react';
+import SectionHeader from '../ui/SectionHeader';
 
-const Education = () => {
-  const education = [
-    {
-      degree: "BTech in Computer Science",
-      institution: "Nirma University",
-      period: "2019-2022",
-      description:
-        "Graduated with honors. Focused on software engineering, algorithms, and data structures.",
-    },
-  ];
+const education = [
+  {
+    degree: 'BTech in Computer Science',
+    institution: 'Nirma University',
+    period: '2019 - 2022',
+    description:
+      'Focused on software engineering, algorithms, data structures, and the foundations behind scalable product systems.',
+  },
+];
 
-  return (
-    <section id="education" className="py-20 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-            Education
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 mx-auto mb-4 rounded-full"></div>
-        </motion.div>
+const Education = () => (
+  <section id="education" className="bg-slate-950 py-24 text-white">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeader
+        eyebrow="Foundation"
+        title="Computer science fundamentals underneath the cloud layer."
+        copy="Formal engineering foundations paired with production experience across web, data, and cloud systems."
+      />
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-primary-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 transition-all duration-300"></div>
-              <div className="relative flex items-start gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary-500 to-purple-500 rounded-xl shadow-lg">
-                    <FiBook className="w-6 h-6 text-white" />
+      <div className="mx-auto mt-12 max-w-4xl">
+        {education.map((item, index) => (
+          <motion.article
+            key={item.degree}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: index * 0.06 }}
+            className="border border-white/10 bg-white/[0.035] p-6 sm:p-8"
+          >
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-cyan-300/30 bg-cyan-300/10 text-cyan-200">
+                <GraduationCap className="h-6 w-6" />
+              </div>
+              <div className="flex-1">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">{item.degree}</h3>
+                    <p className="mt-2 text-base font-medium text-emerald-300">
+                      {item.institution}
+                    </p>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-lg text-primary-600 dark:text-primary-400 font-medium mb-2">
-                      {edu.institution}
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-                      <FiCalendar className="w-4 h-4" />
-                      <span>{edu.period}</span>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {edu.description}
-                    </p>
+                  <div className="inline-flex items-center gap-2 text-sm text-slate-400">
+                    <BookOpen className="h-4 w-4" />
+                    {item.period}
                   </div>
                 </div>
+                <p className="mt-5 text-sm leading-7 text-slate-300">{item.description}</p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.article>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Education;

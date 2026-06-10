@@ -1,64 +1,114 @@
 import { motion } from 'framer-motion';
-import profileImage from '../../assets/tirth.png';
+import { Cpu, Layers3, Route, Sparkles } from 'lucide-react';
+import { profile } from '../../data/profile';
+import SectionHeader from '../ui/SectionHeader';
 
-const About = () => {
-  return (
-    <section
-      id="about"
-      className="py-20 bg-white dark:bg-gray-800"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 mx-auto mb-4 rounded-full"></div>
-        </motion.div>
+const principles = [
+  {
+    icon: Layers3,
+    title: 'Modernize with context',
+    copy: 'Architecture choices are tied to delivery risk, team ownership, security, and long-term maintainability.',
+  },
+  {
+    icon: Cpu,
+    title: 'Build product-grade systems',
+    copy: 'Frontend, backend, data, and cloud layers are designed together so user experience and operations stay aligned.',
+  },
+  {
+    icon: Route,
+    title: 'Turn complexity into workflow',
+    copy: 'Migration, testing, and CI/CD work becomes repeatable engineering systems instead of one-off heroics.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Use AI practically',
+    copy: 'AI is treated as a way to accelerate reasoning, documentation, validation, and user-facing intelligence.',
+  },
+];
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              <div className="relative w-full h-96 rounded-2xl overflow-hidden shadow-2xl border-4 border-white dark:border-gray-800">
-                <img src={profileImage} alt="Tirth Shah" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-            </motion.div>
+const About = () => (
+  <section id="about" className="bg-[#07111f] py-24 text-white">
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="grid gap-12 lg:grid-cols-[0.44fr_0.56fr] lg:items-start">
+        <SectionHeader
+          align="left"
+          eyebrow="About"
+          title="I connect cloud architecture with product execution."
+          copy={profile.positioning}
+        />
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              I am a result-driven Software Engineer with over 3 years of experience in full-stack development and cloud-native solutions. My passion lies in bridging the gap between complex infrastructure and seamless user experiences.
-              </p>
-              <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-              Currently serving as a Senior Software Engineer at Searce, I specialize in architecting MEAN/MERN stack applications and navigating complex cloud migrations on Google Cloud Platform (GCP). Beyond the code, I am a Google Certified Cloud Architect committed to engineering excellence—mentoring junior developers, authoring best practices for unit testing and linting, and optimizing delivery speeds for cross-functional teams.
-              </p>
-              {/* <p className="text-lg text-gray-600 dark:text-gray-300">
-                When I'm not coding, I enjoy contributing to open-source projects, writing
-                technical blog posts, and participating in tech communities.
-              </p> */}
-            </motion.div>
-          </div>
+        <div className="space-y-5">
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-lg leading-8 text-slate-300"
+          >
+            I work best where product requirements, platform constraints, and engineering quality
+            all meet. My role is to make that complexity usable: translate architecture into
+            shippable increments, turn migrations into controlled workflows, and make standards
+            practical enough for a team to follow.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="text-lg leading-8 text-slate-300"
+          >
+            At Searce, that has meant enterprise MEAN/MERN application work, GCP-oriented
+            modernization, PostgreSQL migration accelerators, testing and linting standards,
+            SonarQube hygiene, and mentoring loops that improve delivery speed without lowering
+            technical discipline.
+          </motion.p>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="mt-12 grid gap-4 lg:grid-cols-3">
+        {[
+          ['Architecture lens', 'I look for the system boundary, ownership model, operational risk, and migration path before adding abstractions.'],
+          ['Delivery lens', 'I break work into slices that prove frontend, API, data, cloud, and quality assumptions together.'],
+          ['AI lens', 'I use AI tooling where it improves reasoning, documentation, validation, and developer throughput.'],
+        ].map(([title, copy]) => (
+          <motion.div
+            key={title}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="border border-white/10 bg-slate-950/72 p-5"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
+              {title}
+            </p>
+            <p className="mt-3 text-sm leading-7 text-slate-300">{copy}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {principles.map((principle, index) => {
+          const Icon = principle.icon;
+
+          return (
+            <motion.div
+              key={principle.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="border border-white/10 bg-slate-950/70 p-5"
+            >
+              <Icon className="h-6 w-6 text-cyan-300" />
+              <h3 className="mt-5 text-lg font-semibold text-white">{principle.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">{principle.copy}</p>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+);
 
 export default About;
