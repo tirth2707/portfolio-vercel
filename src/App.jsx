@@ -13,11 +13,13 @@ const ArchitectureSimulator = lazy(() => import("./components/sections/Architect
 const Projects = lazy(() => import("./components/sections/Projects"));
 const Skills = lazy(() => import("./components/sections/Skills"));
 const PortfolioAssistant = lazy(() => import("./components/sections/PortfolioAssistant"));
+const ResearchHighlight = lazy(() => import("./components/sections/ResearchHighlight"));
 const Education = lazy(() => import("./components/sections/Education"));
 const Contact = lazy(() => import("./components/sections/Contact"));
 const Blog = lazy(() => import("./components/sections/Blog"));
 const Certifications = lazy(() => import("./components/sections/Certifications"));
 const BlogDetail = lazy(() => import("./components/sections/BlogDetail"));
+const BeyondTech = lazy(() => import("./components/pages/BeyondTech"));
 
 const SectionFallback = () => (
   <div className="min-h-32 border-y border-white/10 bg-slate-950" aria-hidden="true" />
@@ -51,6 +53,7 @@ function App() {
                 <ArchitectureSimulator />
                 <Skills />
                 <Projects />
+                <ResearchHighlight />
                 <PortfolioAssistant />
                 <Experience />
                 <Certifications />
@@ -75,6 +78,14 @@ function App() {
           element={
             <Suspense fallback={<SectionFallback />}>
               <BlogDetail />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/beyond-tech"
+          element={
+            <Suspense fallback={<SectionFallback />}>
+              <BeyondTech />
             </Suspense>
           }
         />

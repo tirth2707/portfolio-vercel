@@ -9,10 +9,10 @@ const Certifications = () => (
       <SectionHeader
         eyebrow="Credentials"
         title="Google Cloud credentials that back the architecture story."
-        copy="Cloud architecture, associate engineering, and Gen-AI certification work connect the portfolio visuals to real proof."
+        copy="Cloud architecture, professional cloud development, associate engineering, and Gen-AI certification work connect the portfolio visuals to real proof."
       />
 
-      <div className="mt-12 grid gap-5 md:grid-cols-3">
+      <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {certifications.map((cert, index) => (
           <motion.article
             key={cert.title}

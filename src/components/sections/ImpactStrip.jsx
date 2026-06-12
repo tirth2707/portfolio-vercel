@@ -3,7 +3,7 @@ import { profile } from '../../data/profile';
 
 const ImpactStrip = () => (
   <section id="impact" className="border-y border-white/10 bg-slate-950/95 py-8">
-    <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px px-4 sm:px-6 lg:grid-cols-5 lg:px-8">
+    <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px px-4 sm:px-6 lg:grid-cols-3 xl:grid-cols-6 lg:px-8">
       {profile.metrics.map((metric, index) => (
         <motion.div
           key={metric.label}

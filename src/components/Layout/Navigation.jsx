@@ -9,7 +9,9 @@ const navItems = [
   { name: 'Simulator', href: '#simulator', type: 'anchor' },
   { name: 'Skills', href: '#skills', type: 'anchor' },
   { name: 'Cases', href: '#projects', type: 'anchor' },
+  { name: 'Research', href: '#research', type: 'anchor' },
   { name: 'Assistant', href: '#assistant', type: 'anchor' },
+  { name: 'Beyond', href: '/beyond-tech', type: 'link' },
   { name: 'Blog', href: '/blog', type: 'link' },
   { name: 'Contact', href: '#contact', type: 'anchor' },
 ];
@@ -111,7 +113,7 @@ const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="absolute left-0 right-0 top-full border-y border-white/10 bg-slate-950/98 p-3 shadow-2xl md:hidden"
+            className="absolute left-0 right-0 top-full border-y border-white/10 bg-slate-950 p-3 shadow-2xl shadow-black/50 md:hidden"
           >
             <div className="grid gap-1">
               <div className="px-3 py-2 xl:hidden">

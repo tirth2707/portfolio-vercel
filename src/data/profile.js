@@ -45,6 +45,7 @@ export const profile = {
     { value: '30%', label: 'SonarQube code smell reduction' },
     { value: '40%', label: 'junior developer delivery speed lift' },
     { value: '12h -> 2h', label: 'PostgreSQL migration downtime cut' },
-    { value: '3x', label: 'Google Cloud certifications' },
+    { value: '4x', label: 'Google Cloud certifications' },
+    { value: 'PubMed', label: 'indexed Elsevier research publication' },
   ],
 };

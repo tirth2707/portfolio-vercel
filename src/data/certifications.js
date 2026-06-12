@@ -16,5 +16,11 @@ export const certifications = [
         issuer: 'Google Cloud',
         date: 'April 2024',
         link: 'https://www.credential.net/google-cloud-gen-ai-developer',
+    },
+    {
+        title: 'Google Cloud Professional Cloud Developer',
+        issuer: 'Google Cloud',
+        date: '2026',
+        link: 'https://www.credential.net/google-cloud-professional-cloud-developer',
     }
 ];
